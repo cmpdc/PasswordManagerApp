@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.TilePane?>
+
+<Pane fx:id="outerElem" maxHeight="600" minHeight="600" maxWidth="900" minWidth="900" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.MainFrame">
+
+    <BorderPane fx:id="innerElem" maxHeight="600" minHeight="600"  maxWidth="900" minWidth="900" styleClass="mainFrameBody">
+        <center>
+            <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                <Pane fx:id="contentTitles" focusTraversable="true" prefHeight="600.0" prefWidth="360.0" HBox.hgrow="NEVER">
+                    <HBox alignment="CENTER" prefHeight="60.0" prefWidth="360.0" styleClass="titlesHeader">
+                        <Pane prefWidth="300.0" styleClass="searchBar" fx:id="searchBar">
+                            <TextField fx:id="searchField" layoutX="20.0" layoutY="5.0" prefWidth="280.0" promptText="Search..." />
+                            <HBox.margin>
+                                <Insets bottom="10.0" left="5.0" top="10.0" />
+                            </HBox.margin>
+                        </Pane>
+                        <Button fx:id="addContent" mnemonicParsing="false" onMouseClicked="#generatePasswordClick" prefHeight="40" prefWidth="40">
+                            <HBox.margin>
+                                <Insets left="5.0" right="5.0" />
+                            </HBox.margin>
+                        </Button>
+                    </HBox>
+                    <ScrollPane fitToWidth="true" hbarPolicy="NEVER" layoutY="60.0" prefHeight="510.0" prefViewportWidth="340.0" prefWidth="360.0">
+                        <TilePane fx:id="titlesBody" prefHeight="400.0" prefWidth="300.0" tileAlignment="TOP_LEFT">
+                             <padding>
+                                <Insets bottom="5.0" left="10.0" top="5.0" />
+                             </padding>
+                        </TilePane>
+                    </ScrollPane>
+                </Pane>
+                <Pane fx:id="contentBody" focusTraversable="true" prefHeight="600.0" prefWidth="540.0" HBox.hgrow="NEVER">
+                    <TilePane fx:id="contentBodyContents" prefHeight="560.0" prefWidth="525.0" tileAlignment="TOP_LEFT">
+                        <TilePane alignment="CENTER" orientation="VERTICAL" prefHeight="401.0" prefWidth="397.0" styleClass="welcomeContent" TilePane.alignment="CENTER">
+                            <Label layoutX="78.0" layoutY="90.0" styleClass="projectTitle" text="Password Manager" textAlignment="CENTER"/>
+                            <Label layoutX="111.0" layoutY="155.0" styleClass="courseTitle" text="FA21_CSI254.02" />
+                            <Label layoutX="163.0" layoutY="191.0" styleClass="projectOwner" text="by URI" />
+                            <TilePane.margin>
+                               <Insets left="75.0" top="85.0" />
+                            </TilePane.margin>
+                        </TilePane>
+                    </TilePane>
+                </Pane>
+            </HBox>
+        </center>
+    </BorderPane>
+    <BorderPane fx:id="innerElemShadow" disable="true" maxHeight="600" minHeight="600" maxWidth="900" minWidth="900" visible="false" />
+
+</Pane>

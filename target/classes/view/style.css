@@ -1,0 +1,562 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat&family=Crete+Round&family=Indie+Flower&family=PT+Serif:wght@700&family=Roboto+Slab:wght@500&family=Shalimar&display=swap');
+/* GLOBAL */
+.root{
+    -fx-background-color: transparent;
+    -fx-alignment: center;
+}
+
+/*
+ #303338 - "primary" color for main app
+ */
+
+.scroll-pane{
+    -fx-hbar-policy: as-needed;
+    -fx-vbar-policy: as-needed;
+    -fx-background-color: #303338;
+}
+
+.scroll-pane > .viewport{
+    -fx-background-color: transparent;
+}
+
+.scroll-bar:horizontal .track,
+.scroll-bar:vertical .track{
+    -fx-background-color: #303338;
+    -fx-border-color: transparent;
+    -fx-background-radius:  0.0em;
+    -fx-border-radius: 2.0em;
+}
+
+.scroll-bar:horizontal .increment-button ,
+.scroll-bar:horizontal .decrement-button {
+    -fx-background-color: transparent;
+    -fx-background-radius:  0.0em;
+    -fx-padding: 0.0 0.0 10.0 0.0;
+}
+
+.scroll-bar:vertical .increment-button ,
+.scroll-bar:vertical .decrement-button {
+    -fx-background-color: transparent;
+    -fx-background-radius:  0.0em;
+    -fx-padding: 0.0 10.0 0.0 0.0;
+}
+
+.scroll-bar .increment-arrow,
+.scroll-bar .decrement-arrow{
+    -fx-shape:  " ";
+    -fx-padding: 0.15em 0.0;
+}
+
+.scroll-bar:vertical .increment-arrow,
+.scroll-bar:vertical .decrement-arrow{
+    -fx-shape:  " ";
+    -fx-padding: 0.0 0.15em;
+}
+
+.scroll-bar:horizontal .thumb,
+.scroll-bar:vertical .thumb {
+    -fx-background-color: rgba(0, 0, 0, 0.2);
+    -fx-background-insets:  3.5, 0.0, 0.0;
+    -fx-background-radius:  2.0em;
+}
+
+.scroll-bar:horizontal .thumb:hover,
+.scroll-bar:vertical .thumb:hover {
+    -fx-background-color: rgba(0, 0, 0, 0.3);
+    -fx-background-insets:  3.5, 0.0, 0.0;
+    -fx-background-radius:  2.0em;
+}
+
+.scroll-pane .corner{
+    -fx-padding: 0.0 0.15em;
+    -fx-background-color: transparent;
+}
+
+.progress-bar{
+    -fx-background-color: transparent;
+}
+
+.progress-bar .bar{
+    -fx-background-color: linear-gradient(from 10% 10% to 100% 100%, #5d54a4, #776bcc);
+    -fx-background-insets: 0, 1, 1;
+    -fx-background-radius: 3;
+}
+
+.progress-bar .track{
+    -fx-background-color: transparent;
+    -fx-border-style: solid;
+    -fx-border-width: 2;
+    -fx-border-color: #443981;
+    -fx-border-radius: 3;
+}
+
+.context-menu{
+    -fx-text-fill: white;
+    -fx-background-color: #18191c;
+    -fx-background-insets: 0, 1, 2;
+    -fx-background-radius: 5;
+    -fx-padding: 10;
+    -fx-effect: dropshadow(two-pass-box, rgba(0, 0, 0, 0.5), 10, 0, 0, 0);
+    -fx-skin: null;
+    -fx-opacity: 1;
+}
+
+.context-menu .menu-item{
+    -fx-font-size: 14;
+    -fx-background-radius: 5;
+    -fx-padding: 8;
+    -fx-cursor: HAND;
+}
+
+.context-menu .menu-item:disabled{-fx-opacity: 0.6}
+
+.context-menu .separator:horizontal .line{
+    -fx-border-width: 0;
+    -fx-border-color: transparent;
+    -fx-border-insets: 0;
+}
+
+
+/* LOCAL */
+
+#innerElem{
+    -fx-background-color: linear-gradient(from 10% 10% to 100% 100%, #5d54a4, #776bcc);
+    -fx-background-radius: 10;
+    -fx-translate-x: 10;
+    -fx-translate-y: 10;
+}
+
+#innerElemShadow{
+    -fx-translate-x: 10;
+    -fx-translate-y: 10;
+    -fx-effect: dropshadow(two-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0);
+    -fx-background-color: linear-gradient(from 10% 10% to 100% 100%, #5d54a4, #776bcc);
+    -fx-background-radius: 10;
+}
+
+#titleBar {
+    -fx-max-width: 500px;
+    -fx-min-height: 30px;
+    -fx-max-height: 30px;
+    -fx-alignment: center-right;
+    -fx-background-color: rgba(0, 0, 0, 1);
+    -fx-cursor: MOVE;
+}
+
+#appTitle{
+    -fx-text-fill: #e2e2e2;
+    -fx-font-family: "Crete Round";
+    -fx-opacity: 0.8;
+}
+
+#titleBar:hover #appTitle{-fx-opacity: 1;}
+
+#titleBarButtons{
+    -fx-min-height: 30px;
+    -fx-max-height: 30px;
+    -fx-padding: 0px 10px 0px 0px;
+    -fx-alignment: center;
+}
+
+#titleBarButtons Label{
+    -fx-pref-width: 15;
+    -fx-pref-height: 15;
+    -fx-background-radius: 100%;
+    -fx-opacity: 0.5;
+    -fx-cursor: hand;
+}
+
+#titleBar:hover #titleBarButtons Label{-fx-opacity: 0.8;}
+#titleBar:hover #titleBarButtons Label:hover{-fx-opacity: 1;}
+
+#titleBarButtons #minimize{-fx-fill: #fdbc40;}
+#titleBarButtons #help{-fx-fill: #34c749;}
+#titleBarButtons #close{-fx-fill: #fc615d;}
+
+
+#panels{
+    -fx-min-width: 500px;
+    -fx-max-width: 500px;
+    -fx-min-height: 470px;
+    -fx-max-height: 470px;
+}
+
+#box1{
+    -fx-min-width: 580px;
+    -fx-min-height: 580px;
+    -fx-background-color: #f9f9f9;
+    -fx-background-radius: 50;
+    -fx-rotate: 45;
+    -fx-translate-x: -260;
+    -fx-translate-y: -30;
+    -fx-translate-z: 20;
+}
+
+
+#box2{
+    -fx-min-width: 210px;
+    -fx-min-height: 370px;
+    -fx-background-color: linear-gradient(from 0% 50% to 100% 100%, #5d54a4, #6a679e);
+    -fx-background-radius: 30;
+    -fx-rotate: 55;
+    -fx-translate-x: 220;
+    -fx-translate-y: 130;
+}
+
+#box3{
+    -fx-min-width: 180px;
+    -fx-min-height: 180px;
+    -fx-background-color: #7e7bb9;
+    -fx-background-radius: 30;
+    -fx-rotate: 55;
+    -fx-translate-x: 340;
+    -fx-translate-y: 450;
+}
+
+.form{
+    -fx-font-family: "PT Serif";
+}
+
+.form .input{
+    -fx-font-weight: 800;
+    -fx-background-color: #e5e5e5;
+    -fx-background-radius: 5px;
+    -fx-border-style: solid;
+    -fx-border-width: 2px;
+    -fx-border-color: #cccccc;
+    -fx-border-radius: 5px;
+    -fx-padding: 5px 0 5px 25px;
+}
+
+.form .fieldIcon{
+    -fx-fill: #525256;
+    -fx-translate-x: 25;
+    -fx-translate-y: 3;
+}
+
+.inputError .input,
+#formLogin.form_error .input{
+    -fx-prompt-text-fill: #e54d4d;
+    -fx-background-color: #ffcccc;
+    -fx-border-color: #e54d4d !important;
+}
+
+.inputError .fieldIcon,
+#formLogin.form_error .fieldIcon{-fx-fill: #e54d4d!important;}
+
+.form .inputMouseHovered .input{
+    -fx-prompt-text-fill: #6a679e;
+    -fx-border-color: #6a679e;
+    -fx-background-color: #f6f8ff;
+}
+
+.form .inputMouseHovered .fieldIcon{-fx-fill: #6a679e;}
+
+.form .inputFocused .input{-fx-border-color: orange;}
+.form .inputFocused .fieldIcon{-fx-fill: orange;}
+
+.formButtons Button{
+    -fx-background-color: #f9f9f9;
+    -fx-background-radius: 10px;
+    -fx-cursor: hand;
+}
+
+.formButtons Button:pressed{
+    -fx-translate-y: 2;
+}
+
+.formButtons #registerButton,
+.formButtons #loginButton{
+    -fx-background-color: #6c63ac;
+    -fx-text-fill: white;
+}
+
+.formButtons #registerButton:hover,
+.formButtons #loginButton:hover{
+    -fx-background-color: #5d54a4;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 15, 0, 0, 1);
+}
+
+.formButtons #registerButton:pressed,
+.formButtons #loginButton:pressed{
+    -fx-background-color: #6a679e;
+    -fx-effect: none;
+}
+
+#loginButton:disabled{-fx-cursor: crosshair;}
+
+
+.tooltip{
+    -fx-show-delay: 50ms;
+}
+
+/* Content Frame */
+
+.mainFrameBody{
+    -fx-background-color: white!important;
+    -fx-background-radius: 0 0 10 10;
+    -fx-text-fill: white;
+}
+.mainFrameBody #contentTitles{
+    -fx-background-color: #303338;
+}
+#contentTitles .scroll-pane{
+    -fx-background-color: #303338;
+}
+
+#contentBody .scroll-bar:horizontal .track,
+#contentBody .scroll-bar:vertical .track{
+    -fx-background-color: #36393f;
+}
+
+.welcomeContent{
+    -fx-background-color: rgba(0, 0, 0, 0.08);
+    -fx-background-radius: 10;
+}
+
+.welcomeContent:hover{
+    -fx-background-color: rgba(0, 0, 0, 0.12);
+}
+
+.welcomeContent .label{
+    -fx-text-fill: #e2e2e2;
+    -fx-font-family: "Shalimar";
+}
+
+.welcomeContent .label.projectTitle{
+    -fx-font-size: 55;
+    -fx-font-weight: 900;
+}
+
+.welcomeContent .label.courseTitle,
+.welcomeContent .label.projectOwner{-fx-font-size: 25;}
+
+.passwordContent{}
+
+.passwordContent .label{
+    -fx-text-fill: #e2e2e2;
+}
+
+.passwordContent #keyIcon{
+    -fx-fill: #e2e2e2;
+}
+
+.passwordContent .button{
+    -fx-text-fill: #f1f1f1;
+    -fx-background-color: #6a679e;
+    -fx-background-radius: 5;
+    -fx-effect: dropshadow(two-pass-box, rgba(0, 0, 0, 0.5), 10, 0, 0, 0);
+}
+
+.passwordContent .button.deleteButton{
+    -fx-background-color: #e54d4d;
+}
+
+.passwordContent .passwordButtons{
+    -fx-cursor: HAND;
+}
+.passwordContent .passwordButtons SVGPath{-fx-fill: rgba(225, 225, 225, 0.8);}
+
+.passwordContent .passwordButtons.revealed SVGPath,
+.passwordContent .passwordButtons:hover SVGPath{
+    -fx-fill: #6a679e;
+}
+
+.passwordContent .passwordFieldText{
+    -fx-text-fill: #f1f1f1;
+    -fx-background-color: transparent;
+    -fx-border-width: 2;
+    -fx-border-color: transparent;
+    -fx-border-style: solid;
+    -fx-border-radius: 5;
+    -fx-padding: 0;
+}
+
+.passwordContent .passwordFieldText.passwordRevealed{
+    -fx-border-color: #6a679e;
+    -fx-padding: 0 5;
+}
+
+.passwordContent .passwordFieldText.passwordCopied{
+    -fx-text-fill: #6a679e;
+    -fx-border-color: #6a679e;
+    -fx-padding: 0 5;
+}
+
+.passwordContent .passwordButtons:pressed,
+.passwordContent .button:pressed{
+    -fx-translate-y: 2;
+}
+
+.titlesHeader{
+    -fx-background-color: #2f3136;
+}
+
+.titlesHeader .searchBar{
+    -fx-pref-height: 40;
+    -fx-background-color: rgba(0, 0, 0, 0.3);
+    -fx-background-radius: 5;
+}
+
+.titlesHeader .searchBar #searchIcon{
+    -fx-fill: #e2e2e2;
+    -fx-size: 15;
+    -fx-translate-x: 7;
+    -fx-translate-y: 10;
+}
+
+.titlesHeader #searchField{
+    -fx-background-color: transparent;
+    -fx-fill: #e2e2e2;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+}
+
+.titlesHeader #addContent{
+    -fx-background-color: rgba(0, 0, 0, 0.3);
+    -fx-background-radius: 5;
+    -fx-cursor: HAND;
+}
+
+.titlesHeader #addContent:pressed{
+    -fx-translate-y: 2;
+}
+
+.titlesHeader #addContent SVGPath{
+    -fx-fill: #e2e2e2;
+    -fx-size: 15;
+}
+
+.emptyResults{
+    -fx-font-size: 20;
+    -fx-font-weight: 800;
+    -fx-text-fill: #e2e2e2;
+}
+
+
+.mainFrameBody #contentBody,
+#contentBody .scroll-pane{
+    -fx-background-color: #36393f;
+}
+
+.eachPassword,
+.passwordTitleLabel,
+.passwordDateAndTimeLabel{
+    -fx-text-fill: white;
+}
+
+.eachPassword{
+    -fx-background-radius: 8;
+    -fx-cursor: HAND;
+}
+
+.eachPassword:hover{
+    -fx-background-color: rgba(0, 0, 0, 0.1);
+}
+
+
+/* Generate Form */
+.generateFormBody{
+    -fx-background-color: #303338;
+}
+
+.generateFormBody #passwordTitle{
+    -fx-font-weight: 800;
+    -fx-font-size: 15;
+}
+
+.generateFormBody SVGPath{-fx-fill: #e2e2e2;}
+.generateFormBody .button:hover SVGPath{-fx-fill: #5d54a4;}
+
+.generateFormBody .text-field{
+    -fx-text-fill: #e2e2e2;
+    -fx-border-radius: 3;
+    -fx-border-style: solid;
+    -fx-border-color: transparent;
+    -fx-border-width: 2;
+    -fx-background-color: transparent;
+}
+
+.generateFormBody .text-field:hover,
+.generateFormBody .text-field:focused,
+.generateFormBody .text-field.isHovered{
+    -fx-border-color: #5d54a4;
+}
+
+.generateFormBody .text-field.isClicked{
+    -fx-background-color: #373560;
+}
+
+.generateFormBody .text-area{
+    -fx-text-fill: white;
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-border-width: 2;
+    -fx-border-style: solid;
+    -fx-border-radius: 3;
+}
+
+.generateFormBody .text-area .content{
+    -fx-text-fill: white;
+    -fx-background-color: #303338;
+    -fx-background-radius: 6;
+}
+
+.generateFormBody .text-area:hover,
+.generateFormBody .text-area:focused{
+    -fx-border-color: #5d54a4;
+}
+
+.generateFormBody .label{
+    -fx-text-fill: white;
+}
+
+.generateFormBody .check-box{
+    -fx-text-fill: rgba(225, 225, 225, 0.5);;
+    -fx-font-size: 14;
+    -fx-cursor: hand;
+}
+.generateFormBody .check-box:selected{-fx-text-fill: white;}
+
+.generateFormBody .check-box:selected .mark{
+    -fx-background-color: #5d54a4;
+}
+
+.generateFormBody .check-box .box{
+    -fx-background-color: transparent;
+}
+
+.generateFormBody .button{
+    -fx-text-fill: white;
+    -fx-font-weight: 800;
+    -fx-background-color: transparent;
+    -fx-cursor: HAND;
+}
+.generateFormBody .button:pressed{
+    -fx-translate-y: 2;
+}
+
+.generateFormBody .paneGroup{
+    -fx-background-color: rgba(0, 0, 0, 0.1);
+    -fx-background-radius: 8;
+}
+
+.generateFormBody .slider .track{
+    -fx-background-color: #6a679e;
+}
+
+.generateFormBody .slider .thumb{
+    -fx-background-color: #5d54a4;
+    -fx-effect: dropshadow(two-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0);
+    -fx-cursor: MOVE;
+}
+
+.generateFormBody #passwordLengthField{
+    -fx-font-weight: 800;
+}
+
+.generateFormBody .formButtons{
+    -fx-background-color: #5d54a4;
+    -fx-background-radius: 4px;
+}
+
